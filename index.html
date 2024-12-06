@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="author" content="harrnish" />
+  <title>Hover effect using GSAP • Codegrid</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+
+  <!-- TweenMax - GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.4/TweenMax.min.js"></script>
+</head>
+
+<body>
+
+
+  <div class="styled-container">
+    <h1 class="main-heading">Khizar Yaldaram</h1>
+    <h3 class="sub-heading">Welcome to API Calling</h3>
+  </div>
+  <div class="navigation-wrapper">
+    <div class="project-preview-wrapper">
+      <div class="project-preview"></div>
+    </div>
+    <ul class="navigation-list">
+      <li class="navigation-item">
+        <a href="https://fake-apis-muhammad-tauha.vercel.app/products" class="navigation-link navigation-link-1">
+          <span data-text="Products">Products</span>
+        </a>
+      </li>
+      <li class="navigation-item">
+        <a href="https://fake-apis-muhammad-tauha.vercel.app/comments" class="navigation-link navigation-link-2">
+          <span data-text="Comments">Comments</span>
+        </a>
+      </li>
+      <li class="navigation-item">
+        <a href="https://fake-apis-muhammad-tauha.vercel.app/photos" class="navigation-link navigation-link-3">
+          <span data-text="Photos">Photos</span>
+        </a>
+      </li>
+       <li class="navigation-item">
+        <a href="#" class="navigation-link navigation-link-4">
+          <span data-text="Users">Users</span>
+        </a>
+      </li>
+      <li class="navigation-item">
+        <a href="#" class="navigation-link navigation-link-5">
+          <span data-text="Todos">Todos</span>
+        </a>
+      </li>
+      <!-- <li class="navigation-item">
+        <a href="" class="navigation-link navigation-link-6">
+          <span data-text="Swat">Swat</span>
+        </a>
+      </li> -->
+      <!-- <li class="navigation-item">
+        <a href="" class="navigation-link navigation-link-7">
+          <span data-text="KPK">KPK</span>
+        </a>
+      </li> -->
+      <!-- <li class="navigation-item">
+        <a href="" class="navigation-link navigation-link-8">
+          <span data-text="Punjab">Punjab</span>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+  
+  <div
+    id="info-div"
+    class="fade-div"
+    style="width: 500px; background-color: rgb(155, 54, 54); position: absolute; right: 120px; top: 250px; padding: 50px;"
+  >
+    <p>
+      fetch('https://jsonplaceholder.typicode.com/products') <br>
+      .then(response => response.json()) <br>
+      .then(json => console.log(json))
+    </p>
+  </div>
+
+
+  <div
+    id="info-div1"
+    class="fade-div"
+    style="width: 500px; position: absolute; right: 50px; top: 350px; background-color: rgb(155, 54, 54); padding: 50px;"
+  >
+    <p>
+      fetch('https://jsonplaceholder.typicode.com/comments') <br>
+      .then(response => response.json()) <br>
+      .then(json => console.log(json))
+    </p>
+  </div>
+  
+  <div
+    id="info-div2"
+    class="fade-div"
+    style="width: 500px; position: absolute; right: 150px; top: 470px; background-color: rgb(155, 54, 54); padding: 50px;"
+  >
+    <p>
+      fetch('https://jsonplaceholder.typicode.com/photos') <br>
+      .then(response => response.json()) <br>
+      .then(json => console.log(json))
+    </p>
+  </div>
+  <div
+  id="info-div4"
+  class="fade-div"
+  style="width: 500px; position: absolute; right: 150px; top: 550px; background-color: rgb(155, 54, 54); padding: 50px;"
+>
+  <p>
+    fetch('https://jsonplaceholder.typicode.com/photos') <br>
+    .then(response => response.json()) <br>
+    .then(json => console.log(json))
+  </p>
+</div>
+
+<div
+  id="info-div5"
+  class="fade-div"
+  style="width: 500px; position: absolute; right: 150px; top: 650px; background-color: rgb(155, 54, 54); padding: 50px;"
+>
+  <p>
+    fetch('https://jsonplaceholder.typicode.com/photos') <br>
+    .then(response => response.json()) <br>
+    .then(json => console.log(json))
+  </p>
+</div>
+  
+  
+
+  <div class="progress-bar"></div>
+
+
+
+
+
+
+
+  <script>
+    $(document).ready(function () {
+      TweenMax.set(".project-preview", { with: 0 });
+
+      var tl = new TimelineLite();
+
+      $(document)
+        .on("mouseover", ".navigation-item", function (evt) {
+          tl = new TimelineLite();
+          tl.to($(".project-preview"), 1, {
+            width: "500px",
+            ease: Expo.easeInOut
+          });
+        })
+        .on("mouseout", ".navigation-item", function (evt) {
+          tl = new TimelineLite();
+          tl.to($(".project-preview"), 0.5, {
+            width: 0,
+            ease: Expo.easeInOut
+          });
+        });
+     
+      });
+
+      $(".navigation-link-1").hover(
+  function () {
+    // On hover: hide background image and show the div with transition
+    $(".project-preview").css("background-image", "none");
+    $("#info-div").addClass("visible");
+  },
+  function () {
+    // On hover out: restore background image and hide the div with transition
+    $(".project-preview").css("background-image", "none");
+    $("#info-div").removeClass("visible");
+  }
+);
+
+
+$(".navigation-link-2").hover(
+  function () {
+    $(".project-preview").css("background-image", "none"); // Hide background image
+    $("#info-div1").addClass("visible"); // Show info-div1
+  },
+  function () {
+    $(".project-preview").css("background-image", "url(img-2.jpg)"); // Restore image
+    $("#info-div1").removeClass("visible"); // Hide info-div1
+  }
+);
+
+$(".navigation-link-3").hover(
+  function () {
+    $(".project-preview").css("background-image", "none"); // Hide background image
+    $("#info-div2").addClass("visible"); // Show info-div2
+  },
+  function () {
+    $(".project-preview").css("background-image", "url(image3.jpg)"); // Restore image
+    $("#info-div2").removeClass("visible"); // Hide info-div2
+  }
+);
+
+$(".navigation-link-4").hover(
+  function () {
+    $(".project-preview").css("background-image", "none"); // Hide background image
+    $("#info-div4").addClass("visible"); // Show info-div4
+  },
+  function () {
+    $(".project-preview").css("background-image", "url(image4.jpg)"); // Restore image
+    $("#info-div4").removeClass("visible"); // Hide info-div4
+  }
+);
+
+$(".navigation-link-5").hover(
+  function () {
+    $(".project-preview").css("background-image", "none"); // Hide background image
+    $("#info-div5").addClass("visible"); // Show info-div5
+  },
+  function () {
+    $(".project-preview").css("background-image", "url(image5.jpg)"); // Restore image
+    $("#info-div5").removeClass("visible"); // Hide info-div5
+  }
+);
+
+      // $(".navigation-link-6").hover(function(){
+      //   $(".project-preview").css({ "background-image": "url(image6.jpg)"});
+      // })
+      // $(".navigation-link-7").hover(function(){
+      //   $(".project-preview").css({ "background-image": "url(image7.jpg)"});
+      // })
+      // $(".navigation-link-8").hover(function(){
+      //   $(".project-preview").css({ "background-image": "url(image8.jpg)"});
+      // })
+
+
+      $(window).scroll(function() {
+        var scroll = $(window).scrollTop(),
+          dh = $(document).height(),
+          wh = $(window).height();
+        scrollPercent = (scroll / (dh - wh)) * 100;
+        $(".progress-bar").css("height", scrollPercent + "%");
+      });
+  </script>
+
+
+ 
+</body>
+
+</html>
